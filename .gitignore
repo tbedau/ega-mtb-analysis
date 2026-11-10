@@ -1,0 +1,15 @@
+# Patient data is never committed (see README, "Data availability").
+data/
+*.xlsx
+*.csv
+
+# Generated figures and reports
+output/
+__marimo__/
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/

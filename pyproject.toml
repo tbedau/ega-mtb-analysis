@@ -1,0 +1,50 @@
+[project]
+name = "ega-mtb-analysis"
+version = "1.0.0"
+description = "Analysis code: real-world molecular tumor board recommendations and their implementation in esophagogastric adenocarcinoma"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+    "fastexcel>=0.20.2",
+    "kaleido>=1.3.0",
+    "lifelines>=0.30.3",
+    "marimo>=0.23.10",
+    "numpy>=2.4.6",
+    "pandas>=2.3.3",
+    "plotly>=6.8.0",
+    "polars>=1.41.2",
+]
+
+[project.scripts]
+export-figures = "ega_mtb.export:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.0",
+    "ruff>=0.15.18",
+    "ty>=0.0.50",
+    "xlsxwriter>=3.3.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.5,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "ega_mtb"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "PTH"]
+
+[tool.ruff.lint.per-file-ignores]
+# In a marimo notebook the last expression of a cell is its displayed output.
+"analysis.py" = ["B018"]
